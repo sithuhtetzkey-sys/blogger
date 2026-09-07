@@ -1,11 +1,13 @@
 import os
 from dotenv import load_dotenv
 
+import truststore
+truststore.inject_into_ssl()
 load_dotenv()
 
 
 BLOG_ID=os.getenv(
-    "9015661889661921330"
+    "BLOG_ID"
 )
 
 SCOPES=[

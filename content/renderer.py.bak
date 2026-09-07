@@ -1,0 +1,51 @@
+from .seo import generate_schema
+
+
+
+def render(article,image=None):
+
+
+    html=f"""
+
+{generate_schema(article)}
+
+
+<article>
+
+
+<h1>
+{article['title']}
+</h1>
+
+
+"""
+
+
+    if image:
+
+        html+=f"""
+
+<img src="{image}"
+style="
+width:100%;
+border-radius:12px;"
+>
+
+"""
+
+
+    html+=f"""
+
+<div>
+
+{article['content']}
+
+</div>
+
+
+</article>
+
+"""
+
+
+    return html

@@ -1,0 +1,33 @@
+BLOG_SCHEMA = {
+
+"title":
+"string",
+
+"summary":
+"string",
+
+"content":
+"HTML string",
+
+"labels":
+[
+"string"
+],
+
+"seo":
+{
+
+"description":
+"string",
+
+"keywords":
+[
+"string"
+]
+
+},
+
+"image_prompt":
+"string"
+
+}

@@ -1,0 +1,78 @@
+import os
+import json
+import google.generativeai as genai
+
+import truststore
+truststore.inject_into_ssl()
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+genai.configure(
+    api_key=os.getenv(
+        "GEMINI_API_KEY"
+    )
+)
+
+
+
+model = genai.GenerativeModel(
+    "gemini-3.6-flash"
+)
+
+
+
+def generate_article(topic):
+
+
+    prompt=f"""
+
+Create a cinematic movie recap article.
+
+Requirements:
+
+1. Start with a strong curiosity hook.
+2. Do not write like Wikipedia.
+3. Focus on storytelling.
+4. Explain character motivations.
+5. Highlight important turning points.
+6. Explain the ending.
+7. Add original commentary and interpretation.
+8. Generate SEO metadata.
+9. Produce HTML suitable for Blogger.
+
+Return valid JSON matching the schema.
+Topic:
+
+{topic}
+
+
+Return ONLY JSON:
+
+{{
+"title":"",
+"summary":"",
+"content":"",
+"labels":[],
+"seo":
+{{
+"description":"",
+"keywords":[]
+}},
+"image_prompt":""
+}}
+
+Content must be HTML.
+
+"""
+
+
+    response=model.generate_content(
+        prompt
+    )
+
+
+    return json.loads(
+        response.text
+    )

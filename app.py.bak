@@ -1,0 +1,53 @@
+from ai.gemini import generate_article
+
+from content.renderer import render
+
+from blogger.client import blogger
+
+from blogger.posts import create_post
+
+topic="Two Strangers - Movie Recap in Burmese Language"
+
+
+
+article=generate_article(
+    topic
+)
+
+
+
+html=render(
+    article,
+    image="https://m.media-amazon.com/images/M/MV5BNTc0NzM2MTctNTU3Mi00NzU0LTlkMzgtYjcxOGJjNDljZWMxXkEyXkFqcGc@._V1_.jpg"
+)
+
+
+
+service=blogger()
+
+
+
+post=create_post(
+
+    service,
+
+    article["title"],
+
+    html,
+
+    labels=
+    article["labels"],
+
+    draft=True
+
+)
+
+
+
+print(
+"Drafted:"
+)
+
+print(
+post["url"]
+)
