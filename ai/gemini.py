@@ -35,9 +35,9 @@ def generate_movie_recap(
 
     prompt = f"""
 
-You are an expert movie recap writer.
+You are an Myanmar expert movie recap writer .
 
-Create a high-retention cinematic movie recap.
+Create a high-retention cinematic movie recap in Burmese Language.
 
 Movie:
 
